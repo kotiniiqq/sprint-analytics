@@ -35,7 +35,7 @@ def _time_in_status(issue: Issue, start: datetime, end: datetime) -> dict[str, f
     for i, change in enumerate(changes):
         leaves = changes[i + 1].at if i + 1 < len(changes) else end
         lo, hi = max(change.at, start), min(leaves, end)
-        if hi > lo:
+        if change.status != DONE and hi > lo:
             totals[change.status] = totals.get(change.status, 0) + business_hours(lo, hi)
     return totals
 

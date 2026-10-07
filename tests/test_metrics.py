@@ -65,6 +65,7 @@ def test_time_in_status_is_clipped_to_the_sprint():
     early = datetime(2026, 9, 4, 10, tzinfo=UTC)  # Friday before the sprint
     m = sprint_metrics(sprint(issue("T-1", 1, [("In Progress", early), ("Done", at(7, 12))])))
     assert m["time_in_status_hours"]["In Progress"] == 3.0  # Mon 09:00–12:00 only
+    assert "Done" not in m["time_in_status_hours"]  # time after Done is not work time
 
 
 def test_reopened_issue_is_reported():
