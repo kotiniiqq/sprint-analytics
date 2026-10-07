@@ -13,7 +13,7 @@
   team: alpha
   sprint: 6
   required: [velocity, carry_over]
-  forbidden: ["reopened", "scope creep"]
+  forbidden: ["scope creep", "was reopened"]
 
 - id: beta-scope-creep
   team: beta

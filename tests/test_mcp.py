@@ -49,6 +49,24 @@ def test_get_sprint_metrics_returns_computed_numbers():
     assert data["sprint"] == "Beta Sprint 6" and data["completed_points"] == 30
 
 
+def test_sprint_id_may_be_a_number():
+    # LLM clients routinely send ids as integers
+    result = call("get_sprint_metrics", {"team": "beta", "sprint": 6})
+    assert not result.is_error and payload(result)["sprint"] == "Beta Sprint 6"
+
+
+def test_server_works_over_real_stdio():
+    import sys
+    from mcp.client.stdio import StdioServerParameters
+
+    async def go():
+        params = StdioServerParameters(command=sys.executable, args=["-m", "sprint_analytics.cli", "serve-mcp"])
+        async with Client(params) as client:
+            return await client.call_tool("find_stuck_issues", {"team": "gamma"})
+    result = run(go)
+    assert not result.is_error and "GAMMA-60" in json.dumps(payload(result))
+
+
 def test_unknown_team_is_a_readable_error():
     result = call("get_sprint_metrics", {"team": "delta"})
     assert result.is_error

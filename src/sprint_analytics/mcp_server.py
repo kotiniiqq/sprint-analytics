@@ -32,8 +32,12 @@ def _traced(fn):
             return result
         except SourceError as exc:
             tracing.trace(f"mcp.{fn.__name__}", input=kwargs or list(args), ok=False, error=str(exc))
-            # ToolError is shown to the client as is; any other exception would be masked
+            # ToolError reaches the client as is; any other exception would be masked
             raise ToolError(str(exc)) from exc
+        except Exception as exc:
+            tracing.trace(f"mcp.{fn.__name__}", input=kwargs or list(args), ok=False,
+                          error=f"{type(exc).__name__}: {exc}")
+            raise
     return wrapper
 
 
@@ -54,7 +58,7 @@ def build_server(source: Source | None = None) -> MCPServer:
                              "P50/P85, time in status, reopened issues, hygiene, stuck issues. "
                              "sprint is an id or a name; omit it for the latest sprint.")
     @_traced
-    def get_sprint_metrics(team: str, sprint: str | None = None) -> dict:
+    def get_sprint_metrics(team: str, sprint: str | int | None = None) -> dict:
         return sprint_metrics(find_sprint(data, team, sprint))
 
     @server.tool(description="Velocity and completion trend over the last N sprints of a team.")
@@ -67,7 +71,7 @@ def build_server(source: Source | None = None) -> MCPServer:
     @server.tool(description="Issues sitting In Progress or In Review longer than threshold_hours "
                              "(working hours) at the end of the sprint.")
     @_traced
-    def find_stuck_issues(team: str, sprint: str | None = None, threshold_hours: float = 16.0) -> dict:
+    def find_stuck_issues(team: str, sprint: str | int | None = None, threshold_hours: float = 16.0) -> dict:
         target = find_sprint(data, team, sprint)
         return {"sprint": target.name,
                 "stuck": sprint_metrics(target, stuck_threshold_hours=threshold_hours)["stuck"]}
@@ -75,7 +79,7 @@ def build_server(source: Source | None = None) -> MCPServer:
     @server.tool(description="Written sprint report. The LLM writes from computed facts only; a guard "
                              "rejects any number the code did not produce and falls back to a template.")
     @_traced
-    def sprint_report(team: str, sprint: str | None = None) -> dict:
+    def sprint_report(team: str, sprint: str | int | None = None) -> dict:
         target = find_sprint(data, team, sprint)
         result = generate_report(build_facts(data.sprints(team), target))
         return {"sprint": target.name, "source": result.source, "fallback_reason": result.reason,

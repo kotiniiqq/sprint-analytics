@@ -39,6 +39,17 @@ def test_empty_choices_raise_llm_error():
         complete([], client=client_returning(200, {"choices": []}))
 
 
+def test_non_json_body_raises_llm_error():
+    client = httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(200, text="<html>busy</html>")))
+    with pytest.raises(LLMError, match="malformed"):
+        complete([], client=client)
+
+
+def test_wrong_shape_raises_llm_error():
+    with pytest.raises(LLMError, match="malformed"):
+        complete([], client=client_returning(200, {"choices": ["not a dict"]}))
+
+
 def test_missing_key_raises(monkeypatch):
     monkeypatch.delenv("OPENROUTER_API_KEY")
     with pytest.raises(LLMError):

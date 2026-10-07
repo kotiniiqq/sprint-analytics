@@ -93,6 +93,13 @@ def test_stuck_threshold():
     assert m["stuck"] == [{"key": "T-1", "status": "In Review", "hours": 44.0}]
 
 
+def test_history_after_the_sprint_end_is_ignored():
+    later = datetime(2026, 9, 29, 10, tzinfo=UTC)  # in the next sprint
+    m = sprint_metrics(sprint(issue("T-1", 3, DONE_FAST + [("In Progress", at(25)), ("Done", later)])))
+    assert m["cycle_time_hours"] == {"T-1": 9.0}  # not stretched to the second Done
+    assert m["reopened"] == []                     # reopened later, not in this sprint
+
+
 def test_empty_and_unestimated_sprint():
     empty = sprint_metrics(sprint())
     assert empty["completed_points"] == 0 and empty["completion_rate"] == 0.0
@@ -114,7 +121,7 @@ def test_compare_sprints_trend():
     s3 = sprint(issue("T-3", 4, DONE_FAST), issue("T-4", 6, [("In Progress", at(8))]), sprint_id=3)
     c = compare_sprints([s1, s2, s3], last_n=3)
     assert c["velocity"] == [10, 10, 4]
-    assert c["average_velocity"] == 8.0
+    assert c["baseline_velocity"] == 10.0
     assert c["trend_pct"] == -60.0  # last vs the average of the earlier sprints
     assert c["completion_rates"] == [1.0, 1.0, 0.4]
 

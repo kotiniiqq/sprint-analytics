@@ -52,3 +52,13 @@ def test_write_results_creates_markdown(tmp_path):
     path = write_results([run_guard_suite()], out_dir=tmp_path)
     assert "Guard suite" in path.read_text(encoding="utf-8")
     assert list((tmp_path / "results").glob("*.json"))
+
+
+def test_required_facts_use_word_boundaries_and_number_parsing():
+    from sprint_analytics.evals import _required
+    facts = {"completed_points": 1700, "added_points": 0, "hygiene_score": 88.9,
+             "carry_over": ["BETA-66"], "reopened": [], "stuck": []}
+    assert _required("velocity", facts, "Delivered 1,700 points.") == 1.0
+    assert _required("carry_over", facts, "BETA-6 slipped.") == 0.0
+    assert _required("carry_over", facts, "BETA-66 slipped.") == 1.0
+    assert _required("hygiene", facts, "Hygiene is 89.") == 1.0

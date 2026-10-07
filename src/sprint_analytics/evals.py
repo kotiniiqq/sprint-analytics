@@ -6,6 +6,7 @@ report suite - real model output for known sprints; invented-number rate (guard)
                required-facts recall, forbidden phrases, LLM-judge scores, cost, latency.
 """
 import json
+import os
 import re
 import statistics
 from datetime import datetime, timezone
@@ -14,12 +15,13 @@ from typing import Callable
 
 import yaml
 
-from .guard import check
+from . import tracing
+from .guard import check, extract_numbers
 from .llm import LLMError, LLMResult, complete, default_model
 from .report import build_facts, build_prompt
 from .sources import Source, SyntheticSource, find_sprint
 
-EVALS_DIR = Path(__file__).resolve().parents[2] / "evals"
+CASES_DIR = Path(__file__).resolve().parent / "eval_cases"  # shipped inside the package
 
 JUDGE_PROMPT = """You grade a sprint report written for an engineering manager.
 You get FACTS (computed by code, always correct) and REPORT.
@@ -31,7 +33,7 @@ Answer with JSON only: {"accuracy": n, "usefulness": n, "actionability": n, "com
 
 
 def _load(name: str) -> list[dict]:
-    return yaml.safe_load((EVALS_DIR / name).read_text(encoding="utf-8"))
+    return yaml.safe_load((CASES_DIR / name).read_text(encoding="utf-8"))
 
 
 def _facts(source: Source, team: str, sprint) -> dict:
@@ -69,18 +71,23 @@ def run_guard_suite(source: Source | None = None, cases: list[dict] | None = Non
 
 def _required(name: str, facts: dict, text: str) -> float | None:
     """Share of the required items present in the text; None when the fact is empty."""
-    numbers = {f"{float(n):g}" for n in re.findall(r"\d+(?:\.\d+)?", text)}
+    numbers = extract_numbers(text)  # same parsing as the guard: 1,700 stays one number, keys are skipped
+
+    def said(value: float) -> bool:
+        return any(abs(n - value) < 0.051 or abs(n - round(value)) < 1e-6 for n in numbers)
+
     if name == "velocity":
-        return float(f"{facts['completed_points']:g}" in numbers)
+        return float(said(facts["completed_points"]))
     if name == "scope_added":
-        return float(f"{facts['added_points']:g}" in numbers) if facts["added_points"] else None
+        return float(said(facts["added_points"])) if facts["added_points"] else None
     if name == "hygiene":
-        return float(f"{facts['hygiene_score']:g}" in numbers or f"{round(facts['hygiene_score']):g}" in numbers)
+        return float(said(facts["hygiene_score"]))
     keys = {"carry_over": facts["carry_over"], "reopened": facts["reopened"],
             "stuck": [s["key"] for s in facts["stuck"]]}[name]
     if not keys:
         return None
-    return sum(k in text for k in keys) / len(keys)
+    # word boundaries: BETA-6 must not count as a mention of BETA-66
+    return sum(bool(re.search(rf"(?<![\w-]){re.escape(k)}(?![\w-])", text)) for k in keys) / len(keys)
 
 
 def parse_judge(text: str) -> dict | None:
@@ -101,9 +108,10 @@ def run_report_suite(models: list[str] | None = None, llm: Callable[..., LLMResu
                      judge: Callable[..., LLMResult] = complete, judge_model: str | None = None,
                      source: Source | None = None, cases: list[dict] | None = None) -> dict:
     source = source or SyntheticSource()
-    cases = cases or _load("cases.yaml")
+    cases = cases or _load("report_cases.yaml")
     models = models or [default_model()]
-    judge_model = judge_model or default_model()
+    # a fixed judge, set apart from the models under test (SA_JUDGE_MODEL)
+    judge_model = judge_model or os.environ.get("SA_JUDGE_MODEL") or default_model()
     per_model = {}
     for model in models:
         rows = []
@@ -112,6 +120,9 @@ def run_report_suite(models: list[str] | None = None, llm: Callable[..., LLMResu
             row = {"id": case["id"], "model": model}
             try:
                 answer = llm(build_prompt(facts), model=model)
+                tracing.trace("eval.report", model=answer.model, input=case["id"], output=answer.text,
+                              prompt_tokens=answer.prompt_tokens, completion_tokens=answer.completion_tokens,
+                              cost_usd=answer.cost_usd, latency_ms=answer.latency_ms)
             except LLMError as exc:
                 rows.append({**row, "error": str(exc)})
                 continue
@@ -127,6 +138,9 @@ def run_report_suite(models: list[str] | None = None, llm: Callable[..., LLMResu
                                 {"role": "user", "content": f"FACTS:\n{json.dumps(facts)}\n\nREPORT:\n{answer.text}"}],
                                model=judge_model)
                 row["judge"] = parse_judge(graded.text)
+                tracing.trace("eval.judge", model=graded.model, input=case["id"], output=graded.text,
+                              prompt_tokens=graded.prompt_tokens, completion_tokens=graded.completion_tokens,
+                              cost_usd=graded.cost_usd, latency_ms=graded.latency_ms)
             except LLMError as exc:
                 row["judge"], row["judge_error"] = None, str(exc)
             rows.append(row)
@@ -158,13 +172,13 @@ def _summarise(rows: list[dict]) -> dict:
 # ---------- output ----------
 
 def write_results(results: list[dict], out_dir: Path | None = None) -> Path:
-    out_dir = out_dir or EVALS_DIR
+    out_dir = out_dir or Path.cwd() / "evals"
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%SZ")
     raw_dir = out_dir / "results"
     raw_dir.mkdir(parents=True, exist_ok=True)
     (raw_dir / f"{stamp}.json").write_text(json.dumps(results, indent=2, ensure_ascii=False),
                                            encoding="utf-8", newline="\n")
-    lines = ["# Eval results", "", f"Last run: {stamp}. Raw data: `evals/results/{stamp}.json`.", ""]
+    lines = ["# Eval results", "", f"Last run: {stamp}. Raw per-case data is written to `evals/results/` (not committed).", ""]
     for res in results:
         if res["suite"] == "guard":
             lines += ["## Guard suite (no LLM)", "",

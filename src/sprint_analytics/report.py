@@ -53,9 +53,14 @@ def _hours(value) -> str:
 
 def deterministic_report(facts: dict) -> str:
     c = facts["comparison"]
-    trend = c["trend_pct"]
-    trend_line = ("first sprint in the window" if trend is None
-                  else f"{'down' if trend < 0 else 'up'} {abs(trend):g}% against the previous sprints")
+    trend, baseline = c["trend_pct"], c["baseline_velocity"]
+    if trend is None:
+        trend_line = "no earlier sprints to compare with"
+    elif trend == 0:
+        trend_line = f"level with the previous sprints' average of {baseline:g} points"
+    else:
+        trend_line = (f"{'down' if trend < 0 else 'up'} {abs(trend):g}% against "
+                      f"the previous sprints' average of {baseline:g} points")
     lines = [
         f"{facts['sprint']}: completed {facts['completed_points']:g} of {facts['scope_points']:g} points "
         f"({round(facts['completion_rate'] * 100):g}%), {trend_line}. "
@@ -67,7 +72,8 @@ def deterministic_report(facts: dict) -> str:
     if facts["added_points"]:
         risks.append(f"- {facts['added_points']:g} points were added after the sprint started.")
     if facts["carry_over"]:
-        risks.append(f"- {len(facts['carry_over'])} issues carried over: {', '.join(facts['carry_over'])}.")
+        n = len(facts["carry_over"])
+        risks.append(f"- {n} {'issue' if n == 1 else 'issues'} carried over: {', '.join(facts['carry_over'])}.")
     for item in facts["stuck"][:3]:  # the longest-waiting first; the rest by key only
         risks.append(f"- {item['key']} has been {item['status']} for {item['hours']:g} working hours.")
     if len(facts["stuck"]) > 3:

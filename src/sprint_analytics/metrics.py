@@ -20,10 +20,16 @@ def _points(issue: Issue) -> float:
     return issue.story_points or 0
 
 
-def _cycle_time(issue: Issue) -> float | None:
-    """First In Progress to the final Done, in business hours."""
-    started = next((c.at for c in issue.history if c.status == IN_PROGRESS), None)
-    finished = next((c.at for c in reversed(issue.history) if c.status == DONE), None)
+def _until(issue: Issue, end: datetime) -> list:
+    """History as it stood at the sprint end; later changes belong to later sprints."""
+    return [c for c in issue.history if c.at <= end]
+
+
+def _cycle_time(issue: Issue, end: datetime) -> float | None:
+    """First In Progress to the last Done before the sprint end, in business hours."""
+    history = _until(issue, end)
+    started = next((c.at for c in history if c.status == IN_PROGRESS), None)
+    finished = next((c.at for c in reversed(history) if c.status == DONE), None)
     if started is None or finished is None or finished <= started:
         return None
     return business_hours(started, finished)
@@ -40,9 +46,9 @@ def _time_in_status(issue: Issue, start: datetime, end: datetime) -> dict[str, f
     return totals
 
 
-def _was_reopened(issue: Issue) -> bool:
+def _was_reopened(issue: Issue, end: datetime) -> bool:
     seen_done = False
-    for change in issue.history:
+    for change in _until(issue, end):
         if change.status == DONE:
             seen_done = True
         elif seen_done:
@@ -69,7 +75,7 @@ def sprint_metrics(sprint: Sprint, stuck_threshold_hours: float = 16.0) -> dict:
     completed = sum(_points(i) for i in done)
     scope = committed + added
 
-    cycle = {i.key: ct for i in done if (ct := _cycle_time(i)) is not None}
+    cycle = {i.key: ct for i in done if (ct := _cycle_time(i, end)) is not None}
 
     status_hours: dict[str, float] = {}
     for issue in sprint.issues:
@@ -109,7 +115,7 @@ def sprint_metrics(sprint: Sprint, stuck_threshold_hours: float = 16.0) -> dict:
         "cycle_time_p50": percentile(list(cycle.values()), 50),
         "cycle_time_p85": percentile(list(cycle.values()), 85),
         "time_in_status_hours": status_hours,
-        "reopened": [i.key for i in sprint.issues if _was_reopened(i)],
+        "reopened": [i.key for i in sprint.issues if _was_reopened(i, end)],
         "hygiene_score": hygiene,
         "hygiene_issues": hygiene_issues,
         "stuck": stuck,
@@ -128,8 +134,8 @@ def compare_sprints(sprints: list[Sprint], last_n: int = 3) -> dict:
         "team": window[0].team if window else None,
         "sprints": [m["sprint"] for m in metrics],
         "velocity": velocity,
-        "average_velocity": round(sum(velocity) / len(velocity), 1) if velocity else 0.0,
-        "trend_pct": trend,
+        "baseline_velocity": round(baseline, 1) if baseline is not None else None,  # mean of the earlier sprints
+        "trend_pct": trend,  # latest sprint vs baseline_velocity
         "completion_rates": [m["completion_rate"] for m in metrics],
         "carry_over_counts": [len(m["carry_over"]) for m in metrics],
     }

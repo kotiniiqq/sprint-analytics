@@ -45,3 +45,18 @@ def test_compare_rejects_zero_window(capsys):
 def test_report_suite_without_key_is_a_clear_error(capsys):
     assert main(["eval", "--suite", "report"]) == 2
     assert "OPENROUTER_API_KEY" in capsys.readouterr().err
+
+
+def test_guard_eval_passes_the_ci_gate(capsys, tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    assert main(["eval", "--suite", "guard"]) == 0
+    assert (tmp_path / "evals" / "RESULTS.md").exists()
+
+
+def test_guard_eval_fails_when_a_correct_report_is_blocked(monkeypatch, tmp_path):
+    import sprint_analytics.evals as ev
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(ev, "run_guard_suite", lambda: {"suite": "guard", "cases": 1, "tp": 0, "fp": 1, "tn": 0,
+                                                       "fn": 0, "precision": 0.0, "recall": None,
+                                                       "accuracy": 0.0, "rows": []})
+    assert main(["eval", "--suite", "guard"]) == 1

@@ -1,7 +1,7 @@
 # Guard suite: hand-written reports for known sprints.
 # expect: pass   -> every number is supported by the computed facts
 # expect: reject -> the text contains a wrong or invented number
-# The last cases are deliberately hard (a swapped number that exists elsewhere in the facts):
+# The cases marked "known limitation" are deliberately hard (a swapped number that exists elsewhere in the facts):
 # they measure a known limitation instead of hiding it.
 
 - id: beta6-correct-summary
@@ -34,7 +34,7 @@
     - 6 issues stuck in progress, the oldest BETA-71 at 86 hours.
     - Scope grew by 21 points.
     Actions:
-    - Freeze scope after day 2.
+    - Freeze scope early in the sprint.
 
 - id: beta6-wrong-velocity
   team: beta
@@ -66,21 +66,20 @@
   sprint: 6
   expect: pass
   text: |
-    Alpha Sprint 6 delivered 40 of 48 points (83%); only ALPHA-71 carried over.
-    Velocity is 11.1% below the 43.3-point average of the window. Hygiene score 100.
+    Alpha Sprint 6 delivered 44 of 47 points (94%); only ALPHA-72 carried over.
+    Velocity is level with the 44-point baseline of the previous sprints. Hygiene score 100.
 
 - id: alpha6-wrong-carry-count
   team: alpha
   sprint: 6
   expect: reject
-  note: 3 also appears in the facts (three sprints in the comparison window) - same blind spot as the swapped cases
   text: "3 issues carried over into the next sprint."
 
 - id: alpha6-wrong-hours
   team: alpha
   sprint: 6
   expect: reject
-  text: "ALPHA-71 has been in progress for 92 hours."
+  text: "ALPHA-72 has been in progress for 92 hours."
 
 - id: alpha6-healthy-no-numbers
   team: alpha

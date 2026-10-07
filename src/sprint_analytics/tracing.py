@@ -55,8 +55,13 @@ def _send_langfuse(event: dict) -> None:
                                "totalCost": event.get("cost_usd")},
                      "metadata": {"latency_ms": event.get("latency_ms")}},
         })
-    client = _http or httpx.Client(timeout=10)
-    response = client.post(f"{host}/api/public/ingestion", json={"batch": batch}, auth=(public, secret))
+    url, body = f"{host}/api/public/ingestion", {"batch": batch}
+    if _http is not None:
+        response = _http.post(url, json=body, auth=(public, secret))
+    else:
+        # short timeout: a slow Langfuse must not stall the request being traced
+        with httpx.Client(timeout=3) as client:
+            response = client.post(url, json=body, auth=(public, secret))
     if response.status_code >= 400:
         raise RuntimeError(f"Langfuse ingestion returned {response.status_code}")
 

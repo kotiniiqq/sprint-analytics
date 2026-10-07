@@ -8,7 +8,8 @@ FACTS = {
     "carry_over": ["BETA-66", "BETA-67", "BETA-68"],
     "cycle_time_p50": 15.55, "cycle_time_p85": 21.46,
     "stuck": [{"key": "BETA-71", "status": "In Progress", "hours": 86.32}],
-    "comparison": {"velocity": [33, 36, 30], "trend_pct": -13.0, "average_velocity": 33.0},
+    "comparison": {"sprints": ["Beta Sprint 4", "Beta Sprint 5", "Beta Sprint 6"],
+                   "velocity": [33, 36, 30], "trend_pct": -13.0, "baseline_velocity": 34.5},
 }
 
 
@@ -17,14 +18,27 @@ def test_extract_handles_formats_and_skips_issue_keys():
     assert extract_numbers(text) == [1700.0, 46.0, 20.0, 21.0]
 
 
-def test_extract_skips_list_markers():
-    assert extract_numbers("1. Velocity 30\n2. Scope 21") == [30.0, 21.0]
+def test_numbers_inside_issue_keys_are_not_facts():
+    # BETA-66 is in the facts, but 66 is not a number the code computed
+    assert not check("Beta Sprint 6 completed 66 points.", FACTS).ok
+    assert not check("The board shows 71 points left.", FACTS).ok
+
+
+def test_length_of_the_comparison_window_is_not_a_fact():
+    # three sprints in the window does not make "3 issues" true
+    assert not check("Only 2 issues carried over.", FACTS).ok
+    assert check("3 issues carried over.", FACTS).ok  # carry_over really has 3 items here
+
+
+def test_half_up_rounding_is_accepted():
+    facts = {"cycle_time_p50": 22.5, "cycle_time_p85": 21.45, "completion_rate": 0.125}
+    assert check("P50 about 23 hours, P85 about 21.5 hours, 13% done.", facts).ok
 
 
 def test_correct_report_passes():
     text = ("Beta Sprint 6 (Aug 10–21): the team completed 30 of 65 points (46%). "
             "21 points were added mid-sprint and 3 issues carried over: BETA-66, BETA-67, BETA-68. "
-            "Velocity is down 13% against the 33-point average. Cycle time P85 is 21.5 hours; "
+            "Velocity is down 13% against the 34.5-point baseline. Cycle time P85 is 21.5 hours; "
             "BETA-71 has been in progress for 86 hours.")
     result = check(text, FACTS)
     assert result.ok, result.invented

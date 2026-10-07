@@ -15,7 +15,7 @@ import random
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "src" / "sprint_analytics" / "data"
 FIRST_SPRINT = datetime(2026, 6, 1, 9, 0, tzinfo=timezone.utc)  # a Monday
 POINTS = [1, 2, 3, 3, 5, 5, 8]
 PEOPLE = ["ann", "bohdan", "carla", "dmytro", "eva", "farid"]
@@ -60,9 +60,12 @@ class Team:
         return f"{self.prefix}-{self.counter}"
 
     def issue(self, start, end, *, done=True, final_status=None, added=False,
-              points=True, criteria=True, assignee=True, reopened=False, review_hours=None):
+              points=True, criteria=True, assignee=True, reopened=False, review_hours=None,
+              start_after_hours=None):
         rng = self.rng
-        begin = add_business_hours(start, rng.uniform(1, 30) if not added else rng.uniform(25, 45))
+        if start_after_hours is None:
+            start_after_hours = rng.uniform(1, 30) if not added else rng.uniform(25, 45)
+        begin = add_business_hours(start, start_after_hours)
         history = [{"status": "In Progress", "at": iso(begin)}]
         review_at = add_business_hours(begin, rng.uniform(4, 22))
         if done:
@@ -107,12 +110,12 @@ def sprint_window(index: int):
 
 
 def alpha() -> list[dict]:
-    team, sprints = Team("alpha", "ALPHA", 101), []
+    team, sprints = Team("alpha", "ALPHA", 235), []  # seed picked for a steady velocity
     for i in range(6):
         start, end = sprint_window(i)
-        issues = [team.issue(start, end) for _ in range(10)]
-        issues.append(team.issue(start, end, done=False, final_status="In Progress"))
-        issues.append(team.issue(start, end, added=True))
+        issues = [team.issue(start, end) for _ in range(11)]
+        # one small item picked up on the last day: normal carry-over, not a stuck ticket
+        issues.append(team.issue(start, end, done=False, final_status="In Progress", start_after_hours=84))
         sprints.append(sprint_doc(i, "alpha", start, end, issues))
     return sprints
 

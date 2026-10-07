@@ -7,7 +7,7 @@ from typing import Protocol
 
 from .models import Issue, Sprint, StatusChange
 
-DEFAULT_DATA = Path(__file__).resolve().parents[2] / "data"
+DEFAULT_DATA = Path(__file__).resolve().parent / "data"  # shipped inside the package
 
 
 class SourceError(Exception):

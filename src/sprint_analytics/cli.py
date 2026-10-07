@@ -7,9 +7,17 @@ from .metrics import compare_sprints, sprint_metrics
 from .report import build_facts, generate_report
 from .sources import SourceError, find_sprint, get_source
 
+# CI gate for the guard suite: a correct report must never be blocked,
+# and at least this share of planted wrong numbers must be caught
+GUARD_MIN_RECALL = 0.75
+
 
 def _print_json(data) -> None:
     print(json.dumps(data, indent=2, ensure_ascii=False))
+
+
+def _num(value) -> str:
+    return "n/a" if value is None else f"{value:g}"
 
 
 def _metrics_text(m: dict) -> str:
@@ -19,7 +27,7 @@ def _metrics_text(m: dict) -> str:
                               f"({round(m['completion_rate'] * 100):g}%)"),
         ("Added after start", f"{m['added_points']:g} points"),
         ("Carry-over", ", ".join(m["carry_over"]) or "none"),
-        ("Cycle time P50 / P85", f"{m['cycle_time_p50']} / {m['cycle_time_p85']} working hours"),
+        ("Cycle time P50 / P85", f"{_num(m['cycle_time_p50'])} / {_num(m['cycle_time_p85'])} working hours"),
         ("Reopened", ", ".join(m["reopened"]) or "none"),
         ("Hygiene score", f"{m['hygiene_score']:g}"),
         ("Stuck", ", ".join(f"{s['key']} ({s['status']}, {s['hours']:g} h)" for s in m["stuck"]) or "none"),
@@ -113,6 +121,11 @@ def _eval(args) -> int:
             print("report suite skipped: OPENROUTER_API_KEY is not set", file=sys.stderr)
     path = write_results(results)
     print(path.read_text(encoding="utf-8"))
+    guard = next((r for r in results if r["suite"] == "guard"), None)
+    if guard and (guard["fp"] > 0 or (guard["recall"] or 0) < GUARD_MIN_RECALL):
+        print(f"guard eval failed: false alarms {guard['fp']}, recall {guard['recall']} "
+              f"(needs 0 and >= {GUARD_MIN_RECALL})", file=sys.stderr)
+        return 1
     return 0
 
 
