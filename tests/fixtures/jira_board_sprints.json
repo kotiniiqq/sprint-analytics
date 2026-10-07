@@ -1,0 +1,20 @@
+{
+  "maxResults": 50,
+  "startAt": 0,
+  "isLast": true,
+  "values": [
+    {
+      "id": 41,
+      "state": "closed",
+      "name": "Platform Sprint 41",
+      "startDate": "2026-09-07T09:00:00.000+0000",
+      "endDate": "2026-09-18T18:00:00.000+0000",
+      "completeDate": "2026-09-18T17:30:00.000+0000"
+    },
+    {
+      "id": 42,
+      "state": "future",
+      "name": "Platform Sprint 42"
+    }
+  ]
+}

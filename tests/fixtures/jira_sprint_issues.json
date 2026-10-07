@@ -1,0 +1,129 @@
+{
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 3,
+  "issues": [
+    {
+      "key": "PLAT-1",
+      "fields": {
+        "summary": "Payment retry",
+        "issuetype": {
+          "name": "Story"
+        },
+        "assignee": {
+          "displayName": "Ann"
+        },
+        "description": "Do it.\nAcceptance criteria: retries 3 times",
+        "customfield_10016": 5
+      },
+      "changelog": {
+        "histories": [
+          {
+            "created": "2026-09-07T10:00:00.000+0000",
+            "items": [
+              {
+                "field": "status",
+                "fromString": "x",
+                "toString": "In Progress"
+              }
+            ]
+          },
+          {
+            "created": "2026-09-08T10:00:00.000+0000",
+            "items": [
+              {
+                "field": "status",
+                "fromString": "x",
+                "toString": "Code Review"
+              }
+            ]
+          },
+          {
+            "created": "2026-09-08T15:00:00.000+0000",
+            "items": [
+              {
+                "field": "status",
+                "fromString": "x",
+                "toString": "Done"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "PLAT-2",
+      "fields": {
+        "summary": "Audit export",
+        "issuetype": {
+          "name": "Bug"
+        },
+        "assignee": null,
+        "description": null,
+        "customfield_10016": null
+      },
+      "changelog": {
+        "histories": [
+          {
+            "created": "2026-09-10T11:00:00.000+0000",
+            "items": [
+              {
+                "field": "status",
+                "fromString": "x",
+                "toString": "In Progress"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "PLAT-3",
+      "fields": {
+        "summary": "Late addition",
+        "issuetype": {
+          "name": "Task"
+        },
+        "assignee": {
+          "displayName": "Bo"
+        },
+        "description": "acceptance criteria: x",
+        "customfield_10016": 2
+      },
+      "changelog": {
+        "histories": [
+          {
+            "created": "2026-09-09T12:00:00.000+0000",
+            "items": [
+              {
+                "field": "Sprint",
+                "from": "",
+                "to": "41"
+              }
+            ]
+          },
+          {
+            "created": "2026-09-10T09:00:00.000+0000",
+            "items": [
+              {
+                "field": "status",
+                "fromString": "x",
+                "toString": "In Progress"
+              }
+            ]
+          },
+          {
+            "created": "2026-09-11T09:00:00.000+0000",
+            "items": [
+              {
+                "field": "status",
+                "fromString": "x",
+                "toString": "Closed"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
