@@ -1,0 +1,1636 @@
+[
+  {
+    "id": 1,
+    "team": "beta",
+    "name": "Beta Sprint 1",
+    "start": "2026-06-01T09:00:00+00:00",
+    "end": "2026-06-12T18:00:00+00:00",
+    "issues": [
+      {
+        "key": "BETA-1",
+        "summary": "Two-factor login for staff",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-03T14:09:09.236374+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-05T11:45:31.029044+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-05T14:48:20.914487+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-2",
+        "summary": "Server restart from the panel",
+        "type": "task",
+        "story_points": 2,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-04T11:06:33.439229+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-05T13:48:31.450595+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-08T10:03:47.198066+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-3",
+        "summary": "Two-factor login for staff",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-02T15:20:01.372797+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-04T12:20:10.549267+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-04T17:36:56.897760+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-4",
+        "summary": "Server restart from the panel",
+        "type": "story",
+        "story_points": 8,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-01T13:43:25.993089+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-02T17:05:34.558093+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-03T12:40:09.002286+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-5",
+        "summary": "Server restart from the panel",
+        "type": "story",
+        "story_points": 8,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-02T13:57:39.913820+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-04T15:41:30.281783+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-05T10:09:11.842820+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-6",
+        "summary": "Migrate cron jobs to the queue",
+        "type": "story",
+        "story_points": 2,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-03T14:21:01.044321+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-04T10:02:48.013646+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-04T12:21:00.807479+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-7",
+        "summary": "Two-factor login for staff",
+        "type": "bug",
+        "story_points": 2,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-02T11:22:39.830261+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-04T13:11:26.914229+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-04T17:38:13.473609+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-8",
+        "summary": "Backup restore drill",
+        "type": "bug",
+        "story_points": 8,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-03T17:57:28.262899+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-05T10:16:13.969056+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-05T12:45:51.135664+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-9",
+        "summary": "Search by server IP",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-04T11:16:36.682078+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-08T11:07:07.625338+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-08T15:11:06.473153+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-10",
+        "summary": "Ticket auto-assignment rules",
+        "type": "task",
+        "story_points": 3,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-02T11:02:21.924936+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-11",
+        "summary": "Search by server IP",
+        "type": "task",
+        "story_points": 1,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-05T17:27:51.029412+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-09T14:02:05.428350+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-09T15:06:37.799310+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "team": "beta",
+    "name": "Beta Sprint 2",
+    "start": "2026-06-15T09:00:00+00:00",
+    "end": "2026-06-26T18:00:00+00:00",
+    "issues": [
+      {
+        "key": "BETA-12",
+        "summary": "Locale for Polish customers",
+        "type": "task",
+        "story_points": 5,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-18T09:38:28.663060+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T16:40:51.320545+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-19T13:00:03.860018+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-13",
+        "summary": "Status page incident sync",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-18T10:16:35.717599+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T16:35:45.117120+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-19T09:31:16.991043+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-14",
+        "summary": "Status page incident sync",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-17T17:26:44.434788+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T15:32:24.796014+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-19T11:10:09.838761+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-15",
+        "summary": "Migrate cron jobs to the queue",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-15T13:56:43.316745+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-16T17:56:34.209300+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-17T10:52:53.645481+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-16",
+        "summary": "Plan upgrade flow",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-17T17:00:32.909681+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T13:35:01.453224+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-18T16:30:08.037503+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-17",
+        "summary": "Server restart from the panel",
+        "type": "task",
+        "story_points": 8,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-17T11:34:22.566483+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-17T17:07:48.024169+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-18T11:11:27.604051+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-18",
+        "summary": "Locale for Polish customers",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-16T15:29:17.621877+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T15:37:23.591204+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-18T17:47:40.072974+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-19",
+        "summary": "Two-factor login for staff",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-16T14:09:46.509516+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T11:19:23.761617+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-18T13:29:38.860337+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-20",
+        "summary": "Search by server IP",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-18T11:01:44.530468+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-18T16:06:37.220348+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-19T09:40:31.281454+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-21",
+        "summary": "Ticket auto-assignment rules",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-18T10:16:15.916487+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-22",
+        "summary": "Locale for Polish customers",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-19T09:01:29.880361+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-22T17:15:07.226801+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-23T12:03:33.592751+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "team": "beta",
+    "name": "Beta Sprint 3",
+    "start": "2026-06-29T09:00:00+00:00",
+    "end": "2026-07-10T18:00:00+00:00",
+    "issues": [
+      {
+        "key": "BETA-23",
+        "summary": "Dashboard load time",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-29T13:27:05.793214+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-01T14:14:15.633623+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-01T16:27:57.263986+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-24",
+        "summary": "Ticket auto-assignment rules",
+        "type": "task",
+        "story_points": 5,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-02T10:34:33.389111+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-06T09:10:25.801644+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-06T14:33:38.955608+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-25",
+        "summary": "Two-factor login for staff",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-01T09:55:38.004733+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-01T16:35:59.064462+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-02T13:25:52.066157+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-26",
+        "summary": "Ticket auto-assignment rules",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-02T11:20:21.071118+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-06T10:38:11.301570+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-06T14:31:50.766440+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-27",
+        "summary": "Dashboard load time",
+        "type": "story",
+        "story_points": 2,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-29T17:26:51.733211+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-02T10:45:33.689748+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-02T15:49:24.045610+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-28",
+        "summary": "Dashboard load time",
+        "type": "task",
+        "story_points": 2,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-29T10:35:43.083671+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-06-29T15:24:29.950930+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-06-30T09:07:35.697277+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-29",
+        "summary": "Search by server IP",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-02T10:55:36.403388+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-02T17:27:35.939550+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-03T14:27:32.571747+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-30",
+        "summary": "Audit log export",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-30T09:43:40.710496+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-02T09:31:23.618283+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-02T12:32:59.844961+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-31",
+        "summary": "Audit log export",
+        "type": "task",
+        "story_points": 3,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-01T11:06:24.599204+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-02T14:13:12.856645+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-03T11:00:04.409862+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-32",
+        "summary": "Two-factor login for staff",
+        "type": "task",
+        "story_points": 8,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-06-30T13:22:04.006161+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-33",
+        "summary": "Plan upgrade flow",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-03T11:16:27.241752+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-06T13:41:57.895394+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-07T09:13:16.359834+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "team": "beta",
+    "name": "Beta Sprint 4",
+    "start": "2026-07-13T09:00:00+00:00",
+    "end": "2026-07-24T18:00:00+00:00",
+    "issues": [
+      {
+        "key": "BETA-34",
+        "summary": "Status page incident sync",
+        "type": "story",
+        "story_points": 2,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-13T16:52:51.439119+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-14T15:30:28.020973+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-14T16:36:57.936598+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-35",
+        "summary": "Invoice PDF layout",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-13T10:32:31.587590+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-14T11:36:11.621191+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-14T13:40:51.172324+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-36",
+        "summary": "Status page incident sync",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-13T15:48:43.862250+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-15T13:01:32.083261+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-15T14:51:37.735005+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-37",
+        "summary": "Two-factor login for staff",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-15T16:01:59.416854+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-16T17:54:47.407841+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-17T11:16:27.743166+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-38",
+        "summary": "Ticket auto-assignment rules",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-14T11:40:56.836843+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-16T10:34:32.092531+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-16T16:20:37.621996+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-39",
+        "summary": "Ticket auto-assignment rules",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-15T13:38:29.414529+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-16T16:11:55.225966+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-17T09:29:35.498883+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-40",
+        "summary": "Backup restore drill",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-14T15:24:00.685921+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-16T15:47:01.080524+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-17T11:49:58.365870+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-41",
+        "summary": "Payment retry for declined cards",
+        "type": "task",
+        "story_points": 5,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-14T09:20:22.238121+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-42",
+        "summary": "Refund approval step",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-13T16:52:36.428177+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-43",
+        "summary": "Status page incident sync",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-15T16:17:14.394805+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-44",
+        "summary": "Ticket auto-assignment rules",
+        "type": "bug",
+        "story_points": 8,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-15T16:17:16.768798+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-16T13:51:11.318886+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-17T10:50:17.577725+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-45",
+        "summary": "Plan upgrade flow",
+        "type": "task",
+        "story_points": 5,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": []
+      },
+      {
+        "key": "BETA-46",
+        "summary": "Two-factor login for staff",
+        "type": "task",
+        "story_points": 3,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-16T12:19:17.066418+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-16T16:52:12.294488+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-17T13:36:39.287863+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "team": "beta",
+    "name": "Beta Sprint 5",
+    "start": "2026-07-27T09:00:00+00:00",
+    "end": "2026-08-07T18:00:00+00:00",
+    "issues": [
+      {
+        "key": "BETA-47",
+        "summary": "Refund approval step",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-28T13:50:22.126135+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-30T17:05:57.398291+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-31T14:03:42.781921+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-48",
+        "summary": "Billing webhook idempotency",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-29T10:09:06.194958+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-31T11:55:17.147859+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-31T13:33:47.419427+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-49",
+        "summary": "Refund approval step",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-29T16:54:33.862314+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-30T12:42:35.300204+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-30T14:07:47.498436+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-50",
+        "summary": "Invoice PDF layout",
+        "type": "task",
+        "story_points": 8,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-27T14:46:35.084034+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-29T10:09:28.603548+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-29T14:42:16.646425+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-51",
+        "summary": "Search by server IP",
+        "type": "task",
+        "story_points": 3,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-27T10:43:52.897789+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-07-27T16:08:08.313252+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-07-28T10:52:05.651600+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-52",
+        "summary": "Refund approval step",
+        "type": "task",
+        "story_points": 1,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-27T16:01:07.161009+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-53",
+        "summary": "Ticket auto-assignment rules",
+        "type": "bug",
+        "story_points": 2,
+        "assignee": "ann",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-28T17:11:28.726163+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-54",
+        "summary": "Backup restore drill",
+        "type": "bug",
+        "story_points": 8,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-29T14:23:47.256021+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-55",
+        "summary": "Ticket auto-assignment rules",
+        "type": "task",
+        "story_points": 3,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-27T11:30:12.311703+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-56",
+        "summary": "Billing webhook idempotency",
+        "type": "story",
+        "story_points": 2,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-28T11:46:23.221493+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-57",
+        "summary": "Search by server IP",
+        "type": "story",
+        "story_points": 1,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-30T14:09:13.731245+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-03T17:45:32.336281+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-04T14:42:50.694241+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-58",
+        "summary": "Invoice PDF layout",
+        "type": "bug",
+        "story_points": 8,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": []
+      },
+      {
+        "key": "BETA-59",
+        "summary": "Dashboard load time",
+        "type": "story",
+        "story_points": 8,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-30T14:40:29.674551+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-03T16:06:11.015796+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-04T10:17:39.045638+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-60",
+        "summary": "Payment retry for declined cards",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": []
+      },
+      {
+        "key": "BETA-61",
+        "summary": "Locale for Polish customers",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-07-31T10:29:38.173871+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-03T11:03:11.329518+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-03T13:33:02.391447+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "team": "beta",
+    "name": "Beta Sprint 6",
+    "start": "2026-08-10T09:00:00+00:00",
+    "end": "2026-08-21T18:00:00+00:00",
+    "issues": [
+      {
+        "key": "BETA-62",
+        "summary": "Audit log export",
+        "type": "task",
+        "story_points": 2,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-10T13:21:38.073611+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-11T16:48:10.449040+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-12T10:54:47.062180+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-63",
+        "summary": "Plan upgrade flow",
+        "type": "story",
+        "story_points": 8,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-11T12:08:28.131979+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-12T14:05:00.321498+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-12T17:59:43.496172+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-64",
+        "summary": "Payment retry for declined cards",
+        "type": "task",
+        "story_points": 5,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-12T16:20:18.456405+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-14T17:54:33.527970+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-17T11:59:32.228786+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-65",
+        "summary": "Invoice PDF layout",
+        "type": "task",
+        "story_points": 5,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-10T15:22:10.021769+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-12T14:18:53.404275+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-12T15:53:20.682626+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-66",
+        "summary": "Two-factor login for staff",
+        "type": "task",
+        "story_points": 8,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-10T16:47:00.934620+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-67",
+        "summary": "Search by server IP",
+        "type": "story",
+        "story_points": 2,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-13T11:38:06.250979+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-68",
+        "summary": "Migrate cron jobs to the queue",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "bohdan",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-11T17:23:23.103924+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-69",
+        "summary": "Two-factor login for staff",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-11T16:19:20.637500+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-70",
+        "summary": "Payment retry for declined cards",
+        "type": "bug",
+        "story_points": 3,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-12T11:18:57.665578+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-71",
+        "summary": "Payment retry for declined cards",
+        "type": "story",
+        "story_points": 5,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": false,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-10T12:40:32.989685+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-72",
+        "summary": "Migrate cron jobs to the queue",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-14T10:48:03.616529+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-18T10:13:05.096693+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-18T14:15:25.070689+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-73",
+        "summary": "Migrate cron jobs to the queue",
+        "type": "bug",
+        "story_points": 5,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": []
+      },
+      {
+        "key": "BETA-74",
+        "summary": "Refund approval step",
+        "type": "story",
+        "story_points": 2,
+        "assignee": "dmytro",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-13T09:16:06.944319+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-14T13:00:37.704749+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-17T09:36:05.184066+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-75",
+        "summary": "Backup restore drill",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "eva",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": []
+      },
+      {
+        "key": "BETA-76",
+        "summary": "Refund approval step",
+        "type": "bug",
+        "story_points": 2,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-13T10:48:22.248356+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-14T09:28:34.682282+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-14T12:17:56.065612+00:00"
+          }
+        ]
+      },
+      {
+        "key": "BETA-77",
+        "summary": "Search by server IP",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "carla",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": []
+      },
+      {
+        "key": "BETA-78",
+        "summary": "Rate-limit the public API",
+        "type": "story",
+        "story_points": 3,
+        "assignee": "farid",
+        "has_acceptance_criteria": true,
+        "added_after_start": true,
+        "history": [
+          {
+            "status": "In Progress",
+            "at": "2026-08-14T17:23:54.067818+00:00"
+          },
+          {
+            "status": "In Review",
+            "at": "2026-08-17T16:32:46.541937+00:00"
+          },
+          {
+            "status": "Done",
+            "at": "2026-08-18T10:27:14.611434+00:00"
+          }
+        ]
+      }
+    ]
+  }
+]
