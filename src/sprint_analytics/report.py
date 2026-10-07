@@ -68,8 +68,10 @@ def deterministic_report(facts: dict) -> str:
         risks.append(f"- {facts['added_points']:g} points were added after the sprint started.")
     if facts["carry_over"]:
         risks.append(f"- {len(facts['carry_over'])} issues carried over: {', '.join(facts['carry_over'])}.")
-    for item in facts["stuck"]:
+    for item in facts["stuck"][:3]:  # the longest-waiting first; the rest by key only
         risks.append(f"- {item['key']} has been {item['status']} for {item['hours']:g} working hours.")
+    if len(facts["stuck"]) > 3:
+        risks.append(f"- Also stuck: {', '.join(s['key'] for s in facts['stuck'][3:])}.")
     if facts["reopened"]:
         risks.append(f"- Reopened after Done: {', '.join(facts['reopened'])}.")
     if facts["hygiene_issues"]:
