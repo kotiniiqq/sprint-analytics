@@ -1,0 +1,40 @@
+# Report suite: what a useful report for each sprint must contain.
+# Required checks are computed from the facts at run time, so they stay correct
+# if the data is regenerated:
+#   velocity      - the completed points appear
+#   carry_over    - carried-over issue keys appear (recall over the list)
+#   stuck         - stuck issue keys appear
+#   reopened      - reopened issue keys appear
+#   scope_added   - the added points appear
+#   hygiene       - the hygiene score appears
+# forbidden: phrases that would be wrong for this sprint.
+
+- id: alpha-latest
+  team: alpha
+  sprint: 6
+  required: [velocity, carry_over]
+  forbidden: ["reopened", "scope creep"]
+
+- id: beta-scope-creep
+  team: beta
+  sprint: 6
+  required: [velocity, scope_added, carry_over, stuck]
+  forbidden: ["healthy sprint", "no risks"]
+
+- id: beta-early-warning
+  team: beta
+  sprint: 4
+  required: [velocity, scope_added, carry_over]
+  forbidden: ["no risks"]
+
+- id: gamma-review-bottleneck
+  team: gamma
+  sprint: 6
+  required: [velocity, stuck, reopened, hygiene]
+  forbidden: ["scope creep", "added after the sprint started"]
+
+- id: gamma-baseline
+  team: gamma
+  sprint: 3
+  required: [velocity, hygiene]
+  forbidden: []

@@ -1,0 +1,158 @@
+# Guard suite: hand-written reports for known sprints.
+# expect: pass   -> every number is supported by the computed facts
+# expect: reject -> the text contains a wrong or invented number
+# The last cases are deliberately hard (a swapped number that exists elsewhere in the facts):
+# they measure a known limitation instead of hiding it.
+
+- id: beta6-correct-summary
+  team: beta
+  sprint: 6
+  expect: pass
+  text: |
+    Beta Sprint 6 completed 30 of 65 points (46%). 21 points were added after the start and
+    9 issues carried over, BETA-71 among them after 86 working hours in progress.
+    Velocity is down 13% against the previous sprints.
+
+- id: beta6-correct-rounding
+  team: beta
+  sprint: 6
+  expect: pass
+  text: "Cycle time P50 is about 15.6 hours and P85 about 21.5 hours; completion rate 0.46."
+
+- id: beta6-correct-dates
+  team: beta
+  sprint: 6
+  expect: pass
+  text: "Sprint ran from Aug 10 to Aug 21, 2026 and finished 8 of 17 issues."
+
+- id: beta6-correct-list
+  team: beta
+  sprint: 6
+  expect: pass
+  text: |
+    Risks:
+    - 6 issues stuck in progress, the oldest BETA-71 at 86 hours.
+    - Scope grew by 21 points.
+    Actions:
+    - Freeze scope after day 2.
+
+- id: beta6-wrong-velocity
+  team: beta
+  sprint: 6
+  expect: reject
+  text: "Beta Sprint 6 completed 31 points."
+
+- id: beta6-wrong-percent
+  team: beta
+  sprint: 6
+  expect: reject
+  text: "Only 47% of the scope was delivered."
+
+- id: beta6-derived-arithmetic
+  team: beta
+  sprint: 6
+  expect: reject
+  note: correct arithmetic (65 - 30) but not a computed fact; the policy forbids the model to compute
+  text: "35 points were left undone."
+
+- id: beta6-invented-forecast
+  team: beta
+  sprint: 6
+  expect: reject
+  text: "At this pace the next sprint will deliver 25 points."
+
+- id: alpha6-correct
+  team: alpha
+  sprint: 6
+  expect: pass
+  text: |
+    Alpha Sprint 6 delivered 40 of 48 points (83%); only ALPHA-71 carried over.
+    Velocity is 11.1% below the 43.3-point average of the window. Hygiene score 100.
+
+- id: alpha6-wrong-carry-count
+  team: alpha
+  sprint: 6
+  expect: reject
+  note: 3 also appears in the facts (three sprints in the comparison window) - same blind spot as the swapped cases
+  text: "3 issues carried over into the next sprint."
+
+- id: alpha6-wrong-hours
+  team: alpha
+  sprint: 6
+  expect: reject
+  text: "ALPHA-71 has been in progress for 92 hours."
+
+- id: alpha6-healthy-no-numbers
+  team: alpha
+  sprint: 6
+  expect: pass
+  text: "A steady sprint; the one open item should be split before the next planning."
+
+- id: gamma6-correct
+  team: gamma
+  sprint: 6
+  expect: pass
+  text: |
+    Gamma Sprint 6 completed 19 of 25 points (76%), down 33.3%. GAMMA-60 has been in review
+    for 34 hours and GAMMA-61 for 22; GAMMA-62 was reopened after Done. Hygiene score 88.9,
+    4 issues are missing data.
+
+- id: gamma6-wrong-review-hours
+  team: gamma
+  sprint: 6
+  expect: reject
+  text: "GAMMA-60 has been waiting for review for 40 hours."
+
+- id: gamma6-wrong-hygiene
+  team: gamma
+  sprint: 6
+  expect: reject
+  text: "Hygiene score dropped to 72."
+
+- id: gamma6-wrong-trend
+  team: gamma
+  sprint: 6
+  expect: reject
+  text: "Velocity fell by 40% this sprint."
+
+- id: beta4-correct
+  team: beta
+  sprint: 4
+  expect: pass
+  text: |
+    Beta Sprint 4: 33 of 53 points (62%), 16 points added mid-sprint, 4 issues carried over
+    (BETA-41, BETA-42, BETA-43, BETA-45). Velocity is down 7% against the previous sprints.
+
+- id: beta4-wrong-added
+  team: beta
+  sprint: 4
+  expect: reject
+  text: "18 points were added after the sprint started."
+
+- id: beta4-wrong-p85
+  team: beta
+  sprint: 4
+  expect: reject
+  text: "Cycle time P85 reached 26 hours."
+
+- id: beta4-wrong-issue-count
+  team: beta
+  sprint: 4
+  expect: reject
+  text: "The team closed 11 issues."
+
+# --- known limitation: the wrong number happens to be a real fact elsewhere ---
+
+- id: beta6-swapped-numbers
+  team: beta
+  sprint: 6
+  expect: reject
+  note: says 44 completed (44 is the committed figure); the guard checks values, not their meaning
+  text: "Beta Sprint 6 completed 44 points."
+
+- id: gamma6-swapped-hours
+  team: gamma
+  sprint: 6
+  expect: reject
+  note: 22 belongs to GAMMA-61, not GAMMA-60
+  text: "GAMMA-60 has been in review for 22 hours."
