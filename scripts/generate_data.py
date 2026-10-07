@@ -161,7 +161,7 @@ def main() -> None:
     DATA.mkdir(exist_ok=True)
     for name, build in [("alpha", alpha), ("beta", beta), ("gamma", gamma)]:
         path = DATA / f"{name}.json"
-        path.write_text(json.dumps(build(), indent=2) + "\n", encoding="utf-8")
+        path.write_text(json.dumps(build(), indent=2) + "\n", encoding="utf-8", newline="\n")
         print("wrote", path)
 
 
