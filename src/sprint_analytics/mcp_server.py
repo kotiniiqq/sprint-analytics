@@ -25,7 +25,8 @@ INSTRUCTIONS = (
 # configured source; sprint_report also sends the computed facts to the LLM provider.
 READ_ONLY = ToolAnnotations(read_only_hint=True, destructive_hint=False,
                             idempotent_hint=True, open_world_hint=False)
-CALLS_LLM = READ_ONLY.model_copy(update={"open_world_hint": True})
+CALLS_LLM = ToolAnnotations(read_only_hint=True, destructive_hint=False,
+                            idempotent_hint=True, open_world_hint=True)
 
 
 def _traced(fn):
