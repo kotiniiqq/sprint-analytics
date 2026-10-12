@@ -1,5 +1,7 @@
 # sprint-analytics
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/kotiniiqq-sprint-analytics-1fegwz?v=5ba779835dea5a9fba7c25810f0b1945)](https://m8ven.ai/mcp/kotiniiqq-sprint-analytics-1fegwz?s=readme)
+
 Jira sprint metrics computed by code, written up by an LLM, with a guard that rejects
 any number the model did not get from the code. Ships as a CLI and as an **MCP server**,
 with **evals** that measure the guard and the reports, and **tracing** of every LLM and
