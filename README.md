@@ -72,7 +72,9 @@ claude mcp add sprint-analytics -- /absolute/path/to/.venv/bin/sprint-analytics 
 may not have the venv on its `PATH`. On Windows: `...\.venv\Scripts\sprint-analytics.exe`.)
 
 Then ask Claude Code things like *"which gamma issues are stuck and for how long?"* or
-*"compare beta's last three sprints"*. Tools, all read-only:
+*"compare beta's last three sprints"*. Tools, all read-only. Each one declares all four MCP hints
+(`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) so a client knows nothing
+gets changed; only `sprint_report` is marked open-world, because it sends the facts to the LLM provider.
 
 | tool | what it returns |
 |---|---|
@@ -160,7 +162,7 @@ src/sprint_analytics/
   mcp_server.py  cli.py  evals.py         interfaces and evaluation
   data/  eval_cases/                      bundled sprints and eval cases (ship with the package)
 evals/RESULTS.md                          latest eval results
-tests/                                    89 tests, no network
+tests/                                    90 tests, no network
 ```
 
 ## How this was built

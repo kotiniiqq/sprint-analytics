@@ -42,6 +42,21 @@ def test_server_exposes_five_tools():
                      "list_sprints", "sprint_report"]
 
 
+def test_every_tool_declares_all_four_hints():
+    # hosts (and directories like OpenAI's) expect explicit booleans on every tool
+    async def go():
+        async with Client(build_server(SyntheticSource())) as client:
+            return await client.list_tools()
+    tools = {t.name: t.annotations for t in getattr(run(go), "tools", None) or []}
+    assert len(tools) == 5
+    for name, a in tools.items():
+        assert a is not None, name
+        assert a.read_only_hint is True and a.destructive_hint is False, name
+        assert a.idempotent_hint is True, name
+        # only the report leaves the box: the facts go to the LLM provider
+        assert a.open_world_hint is (name == "sprint_report"), name
+
+
 def test_get_sprint_metrics_returns_computed_numbers():
     result = call("get_sprint_metrics", {"team": "beta", "sprint": "6"})
     assert not result.is_error
