@@ -174,6 +174,11 @@ inside issue keys (`BETA-66` made "66 points" pass) and rejected correct roundin
 banker's rounding); cycle time read changelog entries from after the sprint ended (144 h instead
 of 9 h); a regular non-editable install could not find the bundled data.
 
+## Contact
+
+Feedback, ideas, job offers or custom projects (n8n, MCP, AI automation): [kotiniiqq@gmail.com](mailto:kotiniiqq@gmail.com).
+Bug reports and feature requests are welcome in [Issues](https://github.com/kotiniiqq/sprint-analytics/issues).
+
 ## License
 
 MIT
