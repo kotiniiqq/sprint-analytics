@@ -7,6 +7,8 @@ any number the model did not get from the code. Ships as a CLI and as an **MCP s
 with **evals** that measure the guard and the reports, and **tracing** of every LLM and
 tool call (local JSONL, optionally Langfuse).
 
+<img src="https://raw.githubusercontent.com/kotiniiqq/sprint-analytics/main/docs/assets/overview.svg" width="640" alt="sprint-analytics flow">
+
 > Reference implementation of the sprint agents I built for a client's engineering team,
 > where eight team leads used them for nine departments. The client's code is private; this
 > repo rebuilds the core ideas from scratch on **synthetic data**, so anyone can run it.
